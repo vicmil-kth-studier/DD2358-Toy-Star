@@ -1,63 +1,72 @@
 """
-CPU Driven simulation of a toy star using CUDA
+CPU Driven simulation of a toy star
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import gamma
-from typing import Any
+from typing import Any, Tuple
 
 sqrt_pi = np.sqrt(np.pi)
 
 
-def r_exp(x: Any, y: Any, z: Any, h: float):
+def r_exp(
+        x: np.ndarray, 
+        y: np.ndarray, 
+        z: np.ndarray, 
+        h: float) -> np.ndarray:
     """ Cached function for a common operation
 
     Parameters
     ----------
-    x (Any):     a vector/matrix of x positions
-    y (Any):     a vector/matrix of y positions
-    z (Any):     a vector/matrix of z positions
-    h (float):   the smoothing length
+    x (np.ndarray):     a vector/matrix of x positions
+    y (np.ndarray):     a vector/matrix of y positions
+    z (np.ndarray):     a vector/matrix of z positions
+    h (float):          the smoothing length
 
     Returns
     -------
-    (float): exp(-(x^2 + y^2 + z^2) / (h^2))
+    (np.ndarray): exp(-(x^2 + y^2 + z^2) / (h^2))
     """
     return np.exp(-(x*x + y*y + z*z) / (h*h))
 
 
-def w(h: float, rexp: Any) -> Any:
+def w(h: float, rexp: np.ndarray) -> np.ndarray:
     """Gausssian Smoothing kernel (3D)
     (w is the evaluated smoothing function)
 
     Parameters
     ----------
-    h (float):     the smoothing length
-    rexp (Any):    is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))
+    h (float):          the smoothing length
+    rexp (np.ndarray):  is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))
 
     Returns:
-    Any
+    np.ndarray
     """
     
     tmp = h*sqrt_pi    
     return rexp / (tmp*tmp*tmp)
     
 
-def grad_w(x: Any, y: Any, z: Any, h: float, rexp: Any):
+def grad_w(
+        x: np.ndarray, 
+        y: np.ndarray, 
+        z: np.ndarray, 
+        h: float, 
+        rexp: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Gradient of the Gausssian Smoothing kernel (3D)
 
     Parameters
     ----------
-    x (Any):      a vector/matrix of x positions
-    y (Any):      a vector/matrix of y positions
-    z (Any):      a vector/matrix of z positions
-    h (float):    the smoothing length
-    rexp (Any):   is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))
+    x (np.ndarray):      a vector/matrix of x positions
+    y (np.ndarray):      a vector/matrix of y positions
+    z (np.ndarray):      a vector/matrix of z positions
+    h (float):           the smoothing length
+    rexp (np.ndarray):   is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))
 
     Returns
     -------
-    wx, wy, wz:    the evaluated gradient
+    wx, wy, wz (np.ndarray, np.ndarray, np.ndarray): the evaluated gradient
     """
     
     n = rexp / (-0.5*h**5 * (np.pi)**(3/2))
@@ -67,17 +76,20 @@ def grad_w(x: Any, y: Any, z: Any, h: float, rexp: Any):
     
     return wx, wy, wz
     
-def get_pairwise_separations(ri, rj):
+
+def get_pairwise_separations(
+        ri: np.ndarray, 
+        rj: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """ Get pairwise desprations between 2 sets of coordinates
 
     Parameters
     ----------
-    ri (Any):    is an M x 3 matrix of positions
-    rj (Any):    is an N x 3 matrix of positions
+    ri (np.ndarray):    is an M x 3 matrix of positions
+    rj (np.ndarray):    is an N x 3 matrix of positions
 
     Returns
     -------
-    dx, dy, dz:   are M x N matrices of separations
+    dx, dy, dz (np.ndarray, np.ndarray, np.ndarray):   are M x N matrices of separations
     """
     
     m = ri.shape[0]
@@ -100,19 +112,24 @@ def get_pairwise_separations(ri, rj):
     
     return dx, dy, dz
     
-def get_density(r: Any, mass: Any, h: float, rexp: Any):
+
+def get_density(
+        r: np.ndarray, 
+        mass: float, 
+        h: float, 
+        rexp: np.ndarray) -> np.ndarray:
     """ Get Density at sampling loctions from SPH particle distribution
 
     Parameters
     ----------
-    r (Any):     is an M x 3 matrix of sampling locations
-    mass (Any):  is the particle mass
-    h (float):   is the smoothing length
-    rexp (Any):  is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))
+    r (np.ndarray):     is an M x 3 matrix of sampling locations
+    mass (float):       is the particle mass
+    h (float):          is the smoothing length
+    rexp (np.ndarray):  is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))
 
     Returns
     -------
-    rho   is M x 1 vector of densities
+    rho (np.ndarray):   is M x 1 vector of densities
     """
     
     m = r.shape[0]
@@ -121,44 +138,54 @@ def get_density(r: Any, mass: Any, h: float, rexp: Any):
     
     return rho
     
-def get_pressure(rho: Any, k: Any, n: Any):
+
+def get_pressure(rho: np.ndarray, k: float, n: int) -> np.ndarray:
     """ Equation of State
 
     Parameters
     ----------
-    rho (Any):     vector of densities
-    k (Any):       equation of state constant
-    n (Any):       polytropic index
+    rho (np.ndarray):   vector of densities
+    k (float):          equation of state constant
+    n (int):            polytropic index
 
     Returns
     -------
-    p (Any):       pressure
+    p (np.ndarray):     pressure
     """
     
     p = k * rho**(1+1/n)
     
     return p
     
-def get_acc(pos: Any, vel: Any, mass: Any, h: float, k: Any, poly_index: Any, lmbda: Any, nu: Any):
+
+def get_acc(
+        pos: np.ndarray, 
+        vel: np.ndarray, 
+        mass: float, 
+        h: float, 
+        k: float, 
+        poly_index: int, 
+        lmbda: float, 
+        nu: float) -> np.ndarray:
     """ Calculate the acceleration on each SPH particle
 
     Parameters
     ----------
-    pos (Any):            is an N x 3 matrix of positions
-    vel (Any):            is an N x 3 matrix of velocities
-    mass (Any):           is the particle mass
-    h (float):            is the smoothing length
-    k (Any):              equation of state constant
-    poly_index (Any):     polytropic index
-    lmbda external (Any): force constant
-    nu (Any):             viscosity
+    pos (np.ndarray):       is an N x 3 matrix of positions
+    vel (np.ndarray):       is an N x 3 matrix of velocities
+    mass (float):           is the particle mass
+    h (float):              is the smoothing length
+    k (float):              equation of state constant
+    poly_index (float):     polytropic index
+    lmbda external (float): force constant
+    nu (float):             viscosity
 
     Returns
     -------
-    a (Any):              is N x 3 matrix of accelerations
+    a (np.ndarray):         is N x 3 matrix of accelerations
     """
     
-    n = pos.shape[0]
+    n: int = pos.shape[0]
     
     # Calculate densities at the position of the particles
     dx, dy, dz = get_pairwise_separations(pos, pos)
@@ -188,7 +215,13 @@ def get_acc(pos: Any, vel: Any, mass: Any, h: float, k: Any, poly_index: Any, lm
     
     return a
 
-def sim(plot: bool, n: int = 5000, time_end: float = 100, plot_2d : bool = False, plot_real_time : bool = True) -> None:
+
+def sim(
+        plot: bool, 
+        n: int = 5000, 
+        time_end: float = 100, 
+        plot_2d: bool = False, 
+        plot_real_time: bool = True) -> None:
     """ SPH simulation 
     
     Parameters
@@ -197,7 +230,8 @@ def sim(plot: bool, n: int = 5000, time_end: float = 100, plot_2d : bool = False
     n (int):               Number of particles
     time_end (float):      How long the simulation should run
     plot_2d (bool):        If true, plot 2d. If false, plot 3d
-    plot_real_time (bool): Plot a simulation of a star in real time if true, if False, just show the last time step
+    plot_real_time (bool): Plot a simulation of a star in real time if true, 
+                            if False, just show the last time step
 
     Returns
     None
@@ -305,3 +339,105 @@ def sim(plot: bool, n: int = 5000, time_end: float = 100, plot_2d : bool = False
         # Save figure
         plt.savefig('sph.png',dpi=240)
         plt.show()
+
+
+def main() -> None:
+    """ SPH simulation """
+	
+    # Simulation parameters
+    N: int           = 400    # Number of particles
+    t: float         = 0      # current time of the simulation
+    tEnd: float      = 12     # time at which simulation ends
+    dt: float        = 0.04   # timestep
+    M: float         = 2      # star mass
+    R: float         = 0.75   # star radius
+    h: float         = 0.1    # smoothing length
+    k: float         = 0.1    # equation of state constant
+    n: int           = 1      # polytropic index
+    nu: float        = 1      # damping
+    plotRealTime: bool = True # switch on for plotting as the simulation goes along
+	
+	# Generate Initial Conditions
+    np.random.seed(42)            # set the random number generator seed
+    
+    lmbda = 2*k*(1+n)*np.pi**(-3/(2*n)) * (M*gamma(5/2+n)/R**3/gamma(1+n))**(1/n) / R**2  # ~ 2.01
+    m     = M/N                    # single particle mass
+    pos   = np.random.randn(N,3)   # randomly selected positions and velocities
+    vel   = np.zeros(pos.shape)
+	
+	# calculate initial gravitational accelerations
+    acc = get_acc( pos, vel, m, h, k, n, lmbda, nu )
+	
+	# number of timesteps
+    Nt = int(np.ceil(tEnd/dt))
+	
+	# prep figure
+    fig = plt.figure(figsize=(4,5), dpi=80)
+    grid = plt.GridSpec(3, 1, wspace=0.0, hspace=0.3)
+    ax1 = plt.subplot(grid[0:2,0])
+    ax2 = plt.subplot(grid[2,0])
+    rr = np.zeros((100,3))
+    rlin = np.linspace(0,1,100)
+    rr[:,0] =rlin
+    rho_analytic = lmbda/(4*k) * (R**2 - rlin**2)
+	
+	# Simulation Main Loop
+    for i in range(Nt):
+		# (1/2) kick
+        vel += acc * dt/2
+		
+		# drift
+        pos += vel * dt
+		
+		# update accelerations
+        acc = get_acc( pos, vel, m, h, k, n, lmbda, nu )
+		
+		# (1/2) kick
+        vel += acc * dt/2
+		
+		# update time
+        t += dt
+		
+		# get density for plotting
+        dx, dy, dz = get_pairwise_separations(pos, pos)
+        rexp = r_exp(dx, dy, dz, h)
+        rho = get_density(pos, m, h, rexp)
+		
+		# plot in real time
+        if plotRealTime or (i == Nt-1):
+            plt.sca(ax1)
+            plt.cla()
+            cval = np.minimum((rho-3)/3,1).flatten()
+            plt.scatter(pos[:,0],pos[:,1], c=cval, cmap=plt.cm.autumn, s=10, alpha=0.5)
+            ax1.set(xlim=(-1.4, 1.4), ylim=(-1.2, 1.2))
+            ax1.set_aspect('equal', 'box')
+            ax1.set_xticks([-1,0,1])
+            ax1.set_yticks([-1,0,1])
+            ax1.set_facecolor('black')
+            ax1.set_facecolor((.1,.1,.1))
+
+            plt.sca(ax2)
+            plt.cla()
+            ax2.set(xlim=(0, 1), ylim=(0, 3))
+            ax2.set_aspect(0.1)
+            plt.plot(rlin, rho_analytic, color='gray', linewidth=2)
+            dx, dy, dz = get_pairwise_separations(rr, pos)
+            rexp = r_exp(dx, dy, dz, h)
+            rho_radial = get_density(rr, m, h, rexp)
+            plt.plot(rlin, rho_radial, color='blue')
+            plt.pause(0.001)
+	    
+	# add labels/legend
+    plt.sca(ax2)
+    plt.xlabel('radius')
+    plt.ylabel('density')
+
+    # Save figure
+    plt.savefig('sph.png',dpi=240)
+    plt.show()
+        
+    return 0
+
+
+if __name__ == "__main__":
+     main()
