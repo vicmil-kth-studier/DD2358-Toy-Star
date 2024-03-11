@@ -1,9 +1,3 @@
-import sph_orig as sph_old
-import sph_cpu_v2 as sph_new
-import numpy as np
-from scipy.special import gamma
-
-
 """
 We want to make sure that the simulation does what it should 
 even after our optimizations
@@ -16,6 +10,12 @@ We do this using the pytest framework
 
 Note: We only need to test function getAcc, it should cover all the code that was changed
 """
+
+
+import original as sph_old
+import cpu as sph_new
+import numpy as np
+from scipy.special import gamma
 
 
 def test_getAcc():
@@ -43,7 +43,7 @@ def test_getAcc():
     
     # calculate initial gravitational accelerations
     acc_old = sph_old.getAcc( pos, vel, m, h, k, n, lmbda, nu )
-    acc_new = sph_new.getAcc( pos, vel, m, h, k, n, lmbda, nu )
+    acc_new = sph_new.get_acc( pos, vel, m, h, k, n, lmbda, nu )
 
     # Ensure that the result is the same
     assert(len(acc_new) == len(acc_old))
