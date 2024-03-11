@@ -7,6 +7,8 @@ from timeit import default_timer as timer
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
+import cpu
+import original
 
 def plot_different_n(max_n : int, step : int, times : int = 1, show_cpu: bool = False, show_gpu: bool = False, show_original: bool = False, log : bool = False, save : bool = False) -> None:
     """ Plot performance of different optimizations
@@ -32,7 +34,6 @@ def plot_different_n(max_n : int, step : int, times : int = 1, show_cpu: bool = 
     names = []
     
     if show_cpu:
-        import cpu
         functions.append(cpu.sim)
         names.append("CPU (NumPy)")
         
@@ -42,7 +43,6 @@ def plot_different_n(max_n : int, step : int, times : int = 1, show_cpu: bool = 
         names.append("GPU (CuPy)")
     
     if show_original:
-        import original
         functions.append(original.sim)
         names.append("Original (NumPy)")
 
@@ -182,14 +182,12 @@ if __name__ == "__main__":
             plot_real_time=True,
             n=int(args_dict["n"]))
     elif args_dict["plot"] == "cpu":
-        import cpu
         cpu.sim(
             plot=True,
             plot_2d=True,
             plot_real_time=True,
             n=int(args_dict["n"]))
     elif args_dict["plot"] == "original":
-        import original
         original.sim(
             plot=True,
             plot_2d=True,
