@@ -1,3 +1,8 @@
+
+# Add current directory to path(so it can find the other files in this directory)
+import sys; from pathlib import Path; 
+sys.path.append(str(Path(__file__).resolve().parents[0])) 
+
 from timeit import default_timer as timer
 import matplotlib.pyplot as plt
 import numpy as np
