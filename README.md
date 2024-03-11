@@ -22,3 +22,7 @@ You can run the project without Cuda. But to fully utilize the project and run i
 
 ## Results
 When you run the code a window should pop up, showing a simulation of a star
+
+## Documentation
+Feel free to check out the python documentation at:
+[Sphinx documentation](simulation/docs/_build/html)
