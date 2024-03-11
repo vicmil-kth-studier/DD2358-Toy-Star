@@ -25,4 +25,4 @@ When you run the code a window should pop up, showing a simulation of a star
 
 ## Documentation
 Feel free to check out the python documentation at:
-[Sphinx documentation](simulation/docs/_build/html)
+[Sphinx documentation](https://vicmil-kth-studier.github.io/DD2358-Toy-Star/simulation/docs/build/html/modules.html)
