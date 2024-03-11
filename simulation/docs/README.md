@@ -29,3 +29,6 @@ Add extensions in conf.py, such as viewing source code etc.
 
 #### Clean previous build
 make clean
+
+#### Update makefile
+(change desired output directory)
