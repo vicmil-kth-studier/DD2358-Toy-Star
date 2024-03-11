@@ -2,18 +2,18 @@
 CPU Driven simulation of a toy star
 """
 
+from typing import Tuple
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import gamma
-from typing import Any, Tuple
 
 sqrt_pi = np.sqrt(np.pi)
 
 
 def r_exp(
-        x: np.ndarray, 
-        y: np.ndarray, 
-        z: np.ndarray, 
+        x: np.ndarray,
+        y: np.ndarray,
+        z: np.ndarray,
         h: float) -> np.ndarray:
     """ Cached function for a common operation
 
@@ -43,16 +43,16 @@ def w(h: float, rexp: np.ndarray) -> np.ndarray:
     Returns:
     np.ndarray
     """
-    
-    tmp = h*sqrt_pi    
+
+    tmp = h*sqrt_pi
     return rexp / (tmp*tmp*tmp)
-    
+
 
 def grad_w(
-        x: np.ndarray, 
-        y: np.ndarray, 
-        z: np.ndarray, 
-        h: float, 
+        x: np.ndarray,
+        y: np.ndarray,
+        z: np.ndarray,
+        h: float,
         rexp: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Gradient of the Gausssian Smoothing kernel (3D)
 
@@ -68,17 +68,17 @@ def grad_w(
     -------
     wx, wy, wz (np.ndarray, np.ndarray, np.ndarray): the evaluated gradient
     """
-    
+
     n = rexp / (-0.5*h**5 * (np.pi)**(3/2))
     wx = n * x
     wy = n * y
     wz = n * z
-    
+
     return wx, wy, wz
-    
+
 
 def get_pairwise_separations(
-        ri: np.ndarray, 
+        ri: np.ndarray,
         rj: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """ Get pairwise desprations between 2 sets of coordinates
 
@@ -91,32 +91,32 @@ def get_pairwise_separations(
     -------
     dx, dy, dz (np.ndarray, np.ndarray, np.ndarray):   are M x N matrices of separations
     """
-    
+
     m = ri.shape[0]
     n = rj.shape[0]
-    
+
     # positions ri = (x,y,z)
     rix = ri[:,0].reshape((m, 1))
     riy = ri[:,1].reshape((m, 1))
     riz = ri[:,2].reshape((m, 1))
-    
+
     # other set of points positions rj = (x,y,z)
     rjx = rj[:,0].reshape((n, 1))
     rjy = rj[:,1].reshape((n, 1))
     rjz = rj[:,2].reshape((n, 1))
-    
+
     # matrices that store all pairwise particle separations: r_i - r_j
     dx = rix - rjx.T
     dy = riy - rjy.T
     dz = riz - rjz.T
-    
+
     return dx, dy, dz
-    
+
 
 def get_density(
-        r: np.ndarray, 
-        mass: float, 
-        h: float, 
+        r: np.ndarray,
+        mass: float,
+        h: float,
         rexp: np.ndarray) -> np.ndarray:
     """ Get Density at sampling loctions from SPH particle distribution
 
@@ -131,13 +131,13 @@ def get_density(
     -------
     rho (np.ndarray):   is M x 1 vector of densities
     """
-    
+
     m = r.shape[0]
-        
+
     rho = np.sum(mass * w(h, rexp), 1).reshape((m, 1))
-    
+
     return rho
-    
+
 
 def get_pressure(rho: np.ndarray, k: float, n: int) -> np.ndarray:
     """ Equation of State
@@ -152,20 +152,20 @@ def get_pressure(rho: np.ndarray, k: float, n: int) -> np.ndarray:
     -------
     p (np.ndarray):     pressure
     """
-    
+
     p = k * rho**(1+1/n)
-    
+
     return p
-    
+
 
 def get_acc(
-        pos: np.ndarray, 
-        vel: np.ndarray, 
-        mass: float, 
-        h: float, 
-        k: float, 
-        poly_index: int, 
-        lmbda: float, 
+        pos: np.ndarray,
+        vel: np.ndarray,
+        mass: float,
+        h: float,
+        k: float,
+        poly_index: int,
+        lmbda: float,
         nu: float) -> np.ndarray:
     """ Calculate the acceleration on each SPH particle
 
@@ -184,46 +184,46 @@ def get_acc(
     -------
     a (np.ndarray):         is N x 3 matrix of accelerations
     """
-    
+
     n: int = pos.shape[0]
-    
+
     # Calculate densities at the position of the particles
     dx, dy, dz = get_pairwise_separations(pos, pos)
     rexp = r_exp(dx, dy, dz, h) # reuse
     rho = get_density(pos, mass, h, rexp)
-    
+
     # Get the pressures
     p = get_pressure(rho, k, poly_index)
-    
+
     # Get pairwise distances and gradients
     dwx, dwy, dwz = grad_w(dx, dy, dz, h, rexp)
-    
+
     # Add Pressure contribution to accelerations
-    tmp = mass * (p/rho**2 + p.T/rho.T**2)               
-    ax = - np.sum(tmp * dwx, 1).reshape((n, 1))          
-    ay = - np.sum(tmp * dwy, 1).reshape((n, 1))          
-    az = - np.sum(tmp * dwz, 1).reshape((n, 1))          
-    
+    tmp = mass * (p/rho**2 + p.T/rho.T**2)
+    ax = - np.sum(tmp * dwx, 1).reshape((n, 1))
+    ay = - np.sum(tmp * dwy, 1).reshape((n, 1))
+    az = - np.sum(tmp * dwz, 1).reshape((n, 1))
+
     # pack together the acceleration components
     a = np.hstack((ax,ay,az))
-    
+
     # Add external potential force
     a -= lmbda * pos
-    
+
     # Add viscosity
     a -= nu * vel
-    
+
     return a
 
 
 def sim(
-        plot: bool, 
-        n: int = 5000, 
-        time_end: float = 100, 
-        plot_2d: bool = False, 
+        plot: bool,
+        n: int = 5000,
+        time_end: float = 100,
+        plot_2d: bool = False,
         plot_real_time: bool = True) -> None:
     """ SPH simulation 
-    
+
     Parameters
     ----------
     plot: (bool):          Plot a simulation of a star if true
@@ -237,7 +237,7 @@ def sim(
     None
     -------
     """
-    
+
     # Simulation parameters
     t         = 0      # current time of the simulation
     dt        = 0.04   # timestep
@@ -247,21 +247,23 @@ def sim(
     k         = 0.1    # equation of state constant
     poly_index         = 1      # polytropic index
     nu        = 1      # damping
-    
+
     # Generate Initial Conditions
     np.random.seed(42)            # set the random number generator seed
-    
-    lmbda = 2*k*(1+poly_index)*np.pi**(-3/(2*poly_index)) * (mass*gamma(5/2+poly_index)/radius**3/gamma(1+poly_index))**(1/poly_index) / radius**2  # ~ 2.01
+
+    lmbda = 2*k*(1+poly_index)*np.pi**(-3/(2*poly_index)) * (
+        mass*gamma(5/2+poly_index)/radius**3/gamma(1+poly_index)
+        )**(1/poly_index) / radius**2  # ~ 2.01
     m     = mass/n                    # single particle mass
     pos   = np.random.randn(n,3)   # randomly selected positions and velocities
     vel   = np.zeros(pos.shape)
-    
+
     # calculate initial gravitational accelerations
     acc = get_acc(pos, vel, m, h, k, poly_index, lmbda, nu)
-    
+
     # number of timesteps
     timesteps = int(np.ceil(time_end/dt))
-    
+
     # prep figure
     if plot:
         fig = plt.figure(figsize=(4,5), dpi=80)
@@ -278,30 +280,30 @@ def sim(
     for i in range(timesteps):
         # (1/2) kick
         vel += acc * (dt/2)
-        
+
         # drift
         pos += vel * dt
-        
+
         # update accelerations
         acc = get_acc(pos, vel, m, h, k, poly_index, lmbda, nu)
-        
+
         # (1/2) kick
         vel += acc * (dt/2)
-        
+
         # update time
         t += dt
-        
+
         if plot:
             # get density for plotting
             dx, dy, dz = get_pairwise_separations(pos, pos)
             rexp = r_exp(dx, dy, dz, h)
             rho = get_density(pos, m, h, rexp)
-        
+
         # plot in real time
         if plot and (plot_real_time or (i == timesteps-1)):
             plt.sca(ax3d)
             plt.cla()
-            
+
             # 3d view
             cval = np.minimum((rho-3)/3,1).flatten()
 
@@ -309,13 +311,13 @@ def sim(
             ys = pos[:,1]
             zs = pos[:,2]
             ax3d.scatter(xs, ys, zs, s=10, c=cval, cmap=plt.cm.autumn, alpha=0.5)
-            
+
             ax3d.set(xlim=(-1.2, 1.2), ylim=(-1.2, 1.2), zlim=(-1.2, 1.2))
             ax3d.set_aspect('equal', 'box')
             ax3d.set_xticks([-1, 0, 1])
             ax3d.set_yticks([-1, 0, 1])
             ax3d.set_zticks([-1, 0, 1])
-            
+
 			# bottom view
             if plot_2d:
                 plt.sca(ax2d)
@@ -329,13 +331,13 @@ def sim(
 
                 plt.plot(rlin, rho_radial, color='blue')
             plt.pause(0.001)
-        
+
     if plot:
         # add labels/legend
         plt.sca(ax2d)
         plt.xlabel('radius')
         plt.ylabel('density')
-        
+
         # Save figure
         plt.savefig('sph.png',dpi=240)
         plt.show()
@@ -343,7 +345,7 @@ def sim(
 
 def main() -> None:
     """ SPH simulation """
-	
+
     # Simulation parameters
     N: int           = 400    # Number of particles
     t: float         = 0      # current time of the simulation
@@ -356,21 +358,21 @@ def main() -> None:
     n: int           = 1      # polytropic index
     nu: float        = 1      # damping
     plotRealTime: bool = True # switch on for plotting as the simulation goes along
-	
+
 	# Generate Initial Conditions
     np.random.seed(42)            # set the random number generator seed
-    
+
     lmbda = 2*k*(1+n)*np.pi**(-3/(2*n)) * (M*gamma(5/2+n)/R**3/gamma(1+n))**(1/n) / R**2  # ~ 2.01
     m     = M/N                    # single particle mass
     pos   = np.random.randn(N,3)   # randomly selected positions and velocities
     vel   = np.zeros(pos.shape)
-	
+
 	# calculate initial gravitational accelerations
     acc = get_acc( pos, vel, m, h, k, n, lmbda, nu )
-	
+
 	# number of timesteps
     Nt = int(np.ceil(tEnd/dt))
-	
+
 	# prep figure
     fig = plt.figure(figsize=(4,5), dpi=80)
     grid = plt.GridSpec(3, 1, wspace=0.0, hspace=0.3)
@@ -380,29 +382,29 @@ def main() -> None:
     rlin = np.linspace(0,1,100)
     rr[:,0] =rlin
     rho_analytic = lmbda/(4*k) * (R**2 - rlin**2)
-	
+
 	# Simulation Main Loop
     for i in range(Nt):
 		# (1/2) kick
         vel += acc * dt/2
-		
+
 		# drift
         pos += vel * dt
-		
+
 		# update accelerations
         acc = get_acc( pos, vel, m, h, k, n, lmbda, nu )
-		
+
 		# (1/2) kick
         vel += acc * dt/2
-		
+
 		# update time
         t += dt
-		
+
 		# get density for plotting
         dx, dy, dz = get_pairwise_separations(pos, pos)
         rexp = r_exp(dx, dy, dz, h)
         rho = get_density(pos, m, h, rexp)
-		
+
 		# plot in real time
         if plotRealTime or (i == Nt-1):
             plt.sca(ax1)
@@ -426,7 +428,7 @@ def main() -> None:
             rho_radial = get_density(rr, m, h, rexp)
             plt.plot(rlin, rho_radial, color='blue')
             plt.pause(0.001)
-	    
+
 	# add labels/legend
     plt.sca(ax2)
     plt.xlabel('radius')
@@ -435,9 +437,9 @@ def main() -> None:
     # Save figure
     plt.savefig('sph.png',dpi=240)
     plt.show()
-        
+
     return 0
 
 
 if __name__ == "__main__":
-     main()
+    main()
