@@ -22,21 +22,21 @@ You can run the project without Cuda. But to fully utilize the project and run i
 
 ### Args
 To generate graphs you can specify an amount of args, like [ARG]=[VALUE]
-"n" is the max amount of particles
-"times" is the amount of times to run the same simulation
-"step" is the range(step,n,step) between runs on the graph
-"cpu" True/False, turns on and off the CPU in the graph
-"gpu" True/False, turns on and off the GPU in the graph
-"original" True/False, turnes on and off the original in the graph 
-"plot" no/gpu/cpu/original, shows the simulation of the given arg or the preformence graph
-"log" True/False converts the linear graph to a logarithmic gragh
-"save" True/False saves the content in the images folder instead of showing it to the user
+* "n" is the max amount of particles
+* "times" is the amount of times to run the same simulation
+* "step" is the range(step,n,step) between runs on the graph
+* "cpu" True/False, turns on and off the CPU in the graph
+* "gpu" True/False, turns on and off the GPU in the graph
+* "original" True/False, turnes on and off the original in the graph 
+* "plot" no/gpu/cpu/original, shows the simulation of the given arg or the preformence graph
+* "log" True/False converts the linear graph to a logarithmic gragh
+* "save" True/False saves the content in the images folder instead of showing it to the user
 
 #### Examples
-Runs the simulation on the GPU with 1000 particles
+##### Runs the simulation on the GPU with 1000 particles
 python simulation n=1000 plot=gpu
 
-Plots performance of gpu, cpu and original with a step of 100 and a maximum size of 1000 particles on a logarithmic graph
+##### Plots performance of gpu, cpu and original with a step of 100 and a maximum size of 1000 particles on a logarithmic graph
 python simulation n=1000 step=100 times=2 log=True
 
 ## Results
