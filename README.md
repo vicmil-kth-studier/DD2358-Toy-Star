@@ -42,6 +42,8 @@ python simulation n=1000 step=100 times=2 log=True
 ## Results
 When you run the code a window should pop up, showing a simulation of a star
 
+![3D Visualization](https://github.com/vicmil-kth-studier/DD2358-Toy-Star/blob/main/simulation/3d.png)
+
 ## Documentation
 Feel free to check out the python documentation at:
 [Sphinx documentation](https://vicmil-kth-studier.github.io/DD2358-Toy-Star/simulation/docs/build/html/modules.html)
@@ -53,4 +55,3 @@ Feel free to check out the python documentation at:
 time kernprof -l  __main__.py gpu=False cpu=False
 python3 -m line_profiler __main__.py.lprof 
 ```
-
