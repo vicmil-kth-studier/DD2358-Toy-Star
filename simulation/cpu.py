@@ -109,7 +109,7 @@ def get_pairwise_separations(
     dx = rix - rjx.T
     dy = riy - rjy.T
     dz = riz - rjz.T
-
+    
     return dx, dy, dz
 
 
@@ -176,7 +176,7 @@ def get_acc(
     mass (float):           is the particle mass
     h (float):              is the smoothing length
     k (float):              equation of state constant
-    poly_index (float):     polytropic index
+    poly_index (int):     polytropic index
     lmbda external (float): force constant
     nu (float):             viscosity
 
@@ -246,7 +246,7 @@ def sim(
     h         = 0.1    # smoothing length
     k         = 0.1    # equation of state constant
     poly_index         = 1      # polytropic index
-    nu        = 1      # damping
+    nu        = 1.0      # damping
 
     # Generate Initial Conditions
     np.random.seed(42)            # set the random number generator seed
@@ -344,102 +344,7 @@ def sim(
 
 
 def main() -> None:
-    """ SPH simulation """
-
-    # Simulation parameters
-    N: int           = 400    # Number of particles
-    t: float         = 0      # current time of the simulation
-    tEnd: float      = 12     # time at which simulation ends
-    dt: float        = 0.04   # timestep
-    M: float         = 2      # star mass
-    R: float         = 0.75   # star radius
-    h: float         = 0.1    # smoothing length
-    k: float         = 0.1    # equation of state constant
-    n: int           = 1      # polytropic index
-    nu: float        = 1      # damping
-    plotRealTime: bool = True # switch on for plotting as the simulation goes along
-
-	# Generate Initial Conditions
-    np.random.seed(42)            # set the random number generator seed
-
-    lmbda = 2*k*(1+n)*np.pi**(-3/(2*n)) * (M*gamma(5/2+n)/R**3/gamma(1+n))**(1/n) / R**2  # ~ 2.01
-    m     = M/N                    # single particle mass
-    pos   = np.random.randn(N,3)   # randomly selected positions and velocities
-    vel   = np.zeros(pos.shape)
-
-	# calculate initial gravitational accelerations
-    acc = get_acc( pos, vel, m, h, k, n, lmbda, nu )
-
-	# number of timesteps
-    Nt = int(np.ceil(tEnd/dt))
-
-	# prep figure
-    fig = plt.figure(figsize=(4,5), dpi=80)
-    grid = plt.GridSpec(3, 1, wspace=0.0, hspace=0.3)
-    ax1 = plt.subplot(grid[0:2,0])
-    ax2 = plt.subplot(grid[2,0])
-    rr = np.zeros((100,3))
-    rlin = np.linspace(0,1,100)
-    rr[:,0] =rlin
-    rho_analytic = lmbda/(4*k) * (R**2 - rlin**2)
-
-	# Simulation Main Loop
-    for i in range(Nt):
-		# (1/2) kick
-        vel += acc * dt/2
-
-		# drift
-        pos += vel * dt
-
-		# update accelerations
-        acc = get_acc( pos, vel, m, h, k, n, lmbda, nu )
-
-		# (1/2) kick
-        vel += acc * dt/2
-
-		# update time
-        t += dt
-
-		# get density for plotting
-        dx, dy, dz = get_pairwise_separations(pos, pos)
-        rexp = r_exp(dx, dy, dz, h)
-        rho = get_density(pos, m, h, rexp)
-
-		# plot in real time
-        if plotRealTime or (i == Nt-1):
-            plt.sca(ax1)
-            plt.cla()
-            cval = np.minimum((rho-3)/3,1).flatten()
-            plt.scatter(pos[:,0],pos[:,1], c=cval, cmap=plt.cm.autumn, s=10, alpha=0.5)
-            ax1.set(xlim=(-1.4, 1.4), ylim=(-1.2, 1.2))
-            ax1.set_aspect('equal', 'box')
-            ax1.set_xticks([-1,0,1])
-            ax1.set_yticks([-1,0,1])
-            ax1.set_facecolor('black')
-            ax1.set_facecolor((.1,.1,.1))
-
-            plt.sca(ax2)
-            plt.cla()
-            ax2.set(xlim=(0, 1), ylim=(0, 3))
-            ax2.set_aspect(0.1)
-            plt.plot(rlin, rho_analytic, color='gray', linewidth=2)
-            dx, dy, dz = get_pairwise_separations(rr, pos)
-            rexp = r_exp(dx, dy, dz, h)
-            rho_radial = get_density(rr, m, h, rexp)
-            plt.plot(rlin, rho_radial, color='blue')
-            plt.pause(0.001)
-
-	# add labels/legend
-    plt.sca(ax2)
-    plt.xlabel('radius')
-    plt.ylabel('density')
-
-    # Save figure
-    plt.savefig('sph.png',dpi=240)
-    plt.show()
-
-    return 0
-
+    sim(plot=True, n=1000, time_end=10, plot_2d=True, plot_real_time=True)
 
 if __name__ == "__main__":
     main()

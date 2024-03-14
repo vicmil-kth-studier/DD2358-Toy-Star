@@ -246,3 +246,9 @@ def sim(plot: bool, n: int = 5000, time_end = 100, plot_2d : bool = False, plot_
         # Save figure
         plt.savefig('sph.png',dpi=240)
         plt.show()
+        
+def main() -> None:
+    sim(plot=True, n=1000, time_end=10, plot_2d=True, plot_real_time=True)
+
+if __name__ == "__main__":
+    main()

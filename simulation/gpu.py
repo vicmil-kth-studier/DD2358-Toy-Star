@@ -6,40 +6,66 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import gamma
 import cupy as cp
+from typing import Tuple
+
 
 sqrt_pi = cp.sqrt(cp.pi)
 
-def r_exp(x, y, z, h):
-    """
-    Cached function for a common operation
-    x     is a vector/matrix of x positions
-    y     is a vector/matrix of y positions
-    z     is a vector/matrix of z positions
-    h     is the smoothing length
-    rexp  is exp(-(x^2 + y^2 + z^2) / (h^2))
+def r_exp(
+        x: cp.ndarray,
+        y: cp.ndarray,
+        z: cp.ndarray,
+        h: float) -> cp.ndarray:
+    """ Cached function for a common operation
+
+    Parameters
+    ----------
+    x (cp.ndarray):     a vector/matrix of x positions
+    y (cp.ndarray):     a vector/matrix of y positions
+    z (cp.ndarray):     a vector/matrix of z positions
+    h (float):          the smoothing length
+
+    Returns
+    -------
+    (cp.ndarray): exp(-(x^2 + y^2 + z^2) / (h^2))
     """
     return cp.exp(-(x*x + y*y + z*z) / (h*h))
 
-def w(h, rexp):
-    """
-    Gausssian Smoothing kernel (3D)
-    h     is the smoothing length
-    w     is the evaluated smoothing function
-    rexp  is exp(-(x^2 + y^2 + z^2) / (h^2))
+def w(h: float, rexp: cp.ndarray) -> cp.ndarray:
+    """Gausssian Smoothing kernel (3D)
+    (w is the evaluated smoothing function)
+
+    Parameters
+    ----------
+    h (float):          the smoothing length
+    rexp (cp.ndarray):  is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))
+
+    Returns:
+    cp.ndarray
     """
     
     tmp = h*sqrt_pi    
     return rexp / (tmp*tmp*tmp)
     
-def grad_w(x, y, z, h, rexp):
-    """
-    Gradient of the Gausssian Smoothing kernel (3D)
-    x     is a vector/matrix of x positions
-    y     is a vector/matrix of y positions
-    z     is a vector/matrix of z positions
-    h     is the smoothing length
-    rexp  is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))
-    wx, wy, wz     is the evaluated gradient
+def grad_w(
+        x: cp.ndarray,
+        y: cp.ndarray,
+        z: cp.ndarray,
+        h: float,
+        rexp: cp.ndarray) -> Tuple[cp.ndarray, cp.ndarray, cp.ndarray]:
+    """Gradient of the Gausssian Smoothing kernel (3D)
+
+    Parameters
+    ----------
+    x (cp.ndarray):      a vector/matrix of x positions
+    y (cp.ndarray):      a vector/matrix of y positions
+    z (cp.ndarray):      a vector/matrix of z positions
+    h (float):           the smoothing length
+    rexp (cp.ndarray):   is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))
+
+    Returns
+    -------
+    wx, wy, wz (cp.ndarray, cp.ndarray, cp.ndarray): the evaluated gradient
     """
     
     n = rexp / (-0.5*h**5 * (cp.pi)**(3/2))
@@ -49,12 +75,19 @@ def grad_w(x, y, z, h, rexp):
     
     return wx, wy, wz
     
-def get_pairwise_separations(ri, rj):
-    """
-    Get pairwise desprations between 2 sets of coordinates
-    ri    is an M x 3 matrix of positions
-    rj    is an N x 3 matrix of positions
-    dx, dy, dz   are M x N matrices of separations
+def get_pairwise_separations(
+        ri: cp.ndarray,
+        rj: cp.ndarray) -> Tuple[cp.ndarray, cp.ndarray, cp.ndarray]:
+    """ Get pairwise desprations between 2 sets of coordinates
+
+    Parameters
+    ----------
+    ri (cp.ndarray):    is an M x 3 matrix of positions
+    rj (cp.ndarray):    is an N x 3 matrix of positions
+
+    Returns
+    -------
+    dx, dy, dz (cp.ndarray, cp.ndarray, cp.ndarray):   are M x N matrices of separations
     """
     
     m = ri.shape[0]
@@ -77,15 +110,23 @@ def get_pairwise_separations(ri, rj):
     
     return dx, dy, dz
     
-def get_density(r, mass, h, rexp):
-    """
-    Get Density at sampling loctions from SPH particle distribution
-    r     is an M x 3 matrix of sampling locations
-    pos   is an N x 3 matrix of SPH particle positions
-    mass  is the particle mass
-    h     is the smoothing length
-    rexp  is exp(-(x^2 + y^2 + z^2) / (h^2))
-    rho   is M x 1 vector of densities
+def get_density(
+        r: cp.ndarray,
+        mass: float,
+        h: float,
+        rexp: cp.ndarray) -> cp.ndarray:
+    """ Get Density at sampling loctions from SPH particle distribution
+
+    Parameters
+    ----------
+    r (cp.ndarray):     is an M x 3 matrix of sampling locations
+    mass (float):       is the particle mass
+    h (float):          is the smoothing length
+    rexp (cp.ndarray):  is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))
+
+    Returns
+    -------
+    rho (cp.ndarray):   is M x 1 vector of densities
     """
     
     m = r.shape[0]
@@ -94,31 +135,49 @@ def get_density(r, mass, h, rexp):
     
     return rho
     
-def get_pressure(rho, k, n):
-    """
-    Equation of State
-    rho   vector of densities
-    k     equation of state constant
-    n     polytropic index
-    p     pressure
+def get_pressure(rho: cp.ndarray, k: float, n: int) -> cp.ndarray:
+    """ Equation of State
+
+    Parameters
+    ----------
+    rho (cp.ndarray):   vector of densities
+    k (float):          equation of state constant
+    n (int):            polytropic index
+
+    Returns
+    -------
+    p (cp.ndarray):     pressure
     """
     
     p = k * rho**(1+1/n)
     
     return p
     
-def get_acc(pos, vel, mass, h, k, poly_index, lmbda, nu):
-    """
-    Calculate the acceleration on each SPH particle
-    pos   is an N x 3 matrix of positions
-    vel   is an N x 3 matrix of velocities
-    mass  is the particle mass
-    h     is the smoothing length
-    k     equation of state constant
-    poly_index     polytropic index
-    lmbda external force constant
-    nu    viscosity
-    a     is N x 3 matrix of accelerations
+def get_acc(
+        pos: cp.ndarray,
+        vel: cp.ndarray,
+        mass: float,
+        h: float,
+        k: float,
+        poly_index: int,
+        lmbda: float,
+        nu: float) -> cp.ndarray:
+    """ Calculate the acceleration on each SPH particle
+
+    Parameters
+    ----------
+    pos (cp.ndarray):       is an N x 3 matrix of positions
+    vel (cp.ndarray):       is an N x 3 matrix of velocities
+    mass (float):           is the particle mass
+    h (float):              is the smoothing length
+    k (float):              equation of state constant
+    poly_index (int):     polytropic index
+    lmbda external (float): force constant
+    nu (float):             viscosity
+
+    Returns
+    -------
+    a (cp.ndarray):         is N x 3 matrix of accelerations
     """
     
     n = pos.shape[0]
@@ -151,8 +210,32 @@ def get_acc(pos, vel, mass, h, k, poly_index, lmbda, nu):
     
     return a
 
-def sim(plot: bool, n: int = 5000, time_end = 100, plot_2d : bool = False, plot_real_time : bool = True):
-    """ SPH simulation """
+def sim(
+        plot: bool,
+        n: int = 5000,
+        time_end: float = 100,
+        plot_2d: bool = False,
+        plot_real_time: bool = True) -> None:
+    """ SPH simulation 
+    
+    This operation consumes a lot of GPU memory, 
+    If you want to free gpu memory before or after this operation call
+    mempool = cp.get_default_memory_pool()
+    mempool.free_all_blocks()    
+    
+    Parameters
+    ----------
+    plot: (bool):          Plot a simulation of a star if true
+    n (int):               Number of particles
+    time_end (float):      How long the simulation should run
+    plot_2d (bool):        If true, plot 2d. If false, plot 3d
+    plot_real_time (bool): Plot a simulation of a star in real time if true, 
+                            if False, just show the last time step
+
+    Returns
+    None
+    -------
+    """
     
     # Simulation parameters
     t         = 0      # current time of the simulation
@@ -162,7 +245,7 @@ def sim(plot: bool, n: int = 5000, time_end = 100, plot_2d : bool = False, plot_
     h         = 0.1    # smoothing length
     k         = 0.1    # equation of state constant
     poly_index         = 1      # polytropic index
-    nu        = 1      # damping
+    nu        = 1.0      # damping
     
     # Generate Initial Conditions
     cp.random.seed(42)            # set the random number generator seed
@@ -255,3 +338,9 @@ def sim(plot: bool, n: int = 5000, time_end = 100, plot_2d : bool = False, plot_
         # Save figure
         plt.savefig('sph.png',dpi=240)
         plt.show()
+        
+def main() -> None:
+    sim(plot=True, n=1000, time_end=10, plot_2d=True, plot_real_time=True)
+
+if __name__ == "__main__":
+    main()
