@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>simulation package &#8212; toy-star  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="simulation" href="modules.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -31,88 +32,88 @@
           <div class="body" role="main">
             
   <section id="simulation-package">
-<h1>simulation package<a class="headerlink" href="#simulation-package" title="Permalink to this heading">¶</a></h1>
+<h1>simulation package<a class="headerlink" href="#simulation-package" title="Link to this heading">¶</a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
 <section id="module-simulation.cpu">
-<span id="simulation-cpu-module"></span><h2>simulation.cpu module<a class="headerlink" href="#module-simulation.cpu" title="Permalink to this heading">¶</a></h2>
+<span id="simulation-cpu-module"></span><h2>simulation.cpu module<a class="headerlink" href="#module-simulation.cpu" title="Link to this heading">¶</a></h2>
 <p>CPU Driven simulation of a toy star</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.cpu.get_acc">
-<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">get_acc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmbda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#get_acc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.get_acc" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">get_acc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmbda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#get_acc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.get_acc" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate the acceleration on each SPH particle</p>
 <section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
 <p>pos (np.ndarray):       is an N x 3 matrix of positions
 vel (np.ndarray):       is an N x 3 matrix of velocities
 mass (float):           is the particle mass
 h (float):              is the smoothing length
 k (float):              equation of state constant
-poly_index (float):     polytropic index
+poly_index (int):     polytropic index
 lmbda external (float): force constant
 nu (float):             viscosity</p>
 </section>
 <section id="returns">
-<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this heading">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
 <p>a (np.ndarray):         is N x 3 matrix of accelerations</p>
 </section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.cpu.get_density">
-<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">get_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rexp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#get_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.get_density" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">get_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rexp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#get_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.get_density" title="Link to this definition">¶</a></dt>
 <dd><p>Get Density at sampling loctions from SPH particle distribution</p>
 <section id="id1">
-<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <p>r (np.ndarray):     is an M x 3 matrix of sampling locations
 mass (float):       is the particle mass
 h (float):          is the smoothing length
 rexp (np.ndarray):  is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))</p>
 </section>
 <section id="id2">
-<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
 <p>rho (np.ndarray):   is M x 1 vector of densities</p>
 </section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.cpu.get_pairwise_separations">
-<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">get_pairwise_separations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#get_pairwise_separations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.get_pairwise_separations" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">get_pairwise_separations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#get_pairwise_separations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.get_pairwise_separations" title="Link to this definition">¶</a></dt>
 <dd><p>Get pairwise desprations between 2 sets of coordinates</p>
 <section id="id3">
-<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <p>ri (np.ndarray):    is an M x 3 matrix of positions
 rj (np.ndarray):    is an N x 3 matrix of positions</p>
 </section>
 <section id="id4">
-<h3>Returns<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <p>dx, dy, dz (np.ndarray, np.ndarray, np.ndarray):   are M x N matrices of separations</p>
 </section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.cpu.get_pressure">
-<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">get_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#get_pressure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.get_pressure" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">get_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#get_pressure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.get_pressure" title="Link to this definition">¶</a></dt>
 <dd><p>Equation of State</p>
 <section id="id5">
-<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <p>rho (np.ndarray):   vector of densities
 k (float):          equation of state constant
 n (int):            polytropic index</p>
 </section>
 <section id="id6">
-<h3>Returns<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <p>p (np.ndarray):     pressure</p>
 </section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.cpu.grad_w">
-<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">grad_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rexp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#grad_w"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.grad_w" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">grad_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rexp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#grad_w"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.grad_w" title="Link to this definition">¶</a></dt>
 <dd><p>Gradient of the Gausssian Smoothing kernel (3D)</p>
 <section id="id7">
-<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
 <p>x (np.ndarray):      a vector/matrix of x positions
 y (np.ndarray):      a vector/matrix of y positions
 z (np.ndarray):      a vector/matrix of z positions
@@ -120,40 +121,39 @@ h (float):           the smoothing length
 rexp (np.ndarray):   is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))</p>
 </section>
 <section id="id8">
-<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
 <p>wx, wy, wz (np.ndarray, np.ndarray, np.ndarray): the evaluated gradient</p>
 </section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.cpu.main">
-<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.main" title="Permalink to this definition">¶</a></dt>
-<dd><p>SPH simulation</p>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.main" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.cpu.r_exp">
-<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">r_exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#r_exp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.r_exp" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">r_exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#r_exp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.r_exp" title="Link to this definition">¶</a></dt>
 <dd><p>Cached function for a common operation</p>
 <section id="id9">
-<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <p>x (np.ndarray):     a vector/matrix of x positions
 y (np.ndarray):     a vector/matrix of y positions
 z (np.ndarray):     a vector/matrix of z positions
 h (float):          the smoothing length</p>
 </section>
 <section id="id10">
-<h3>Returns<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <p>(np.ndarray): exp(-(x^2 + y^2 + z^2) / (h^2))</p>
 </section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.cpu.sim">
-<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">sim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_2d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_real_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#sim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.sim" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">sim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_2d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_real_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#sim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.sim" title="Link to this definition">¶</a></dt>
 <dd><p>SPH simulation</p>
 <section id="id11">
-<h3>Parameters<a class="headerlink" href="#id11" title="Permalink to this heading">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
 <p>plot: (bool):          Plot a simulation of a star if true
 n (int):               Number of particles
 time_end (float):      How long the simulation should run
@@ -170,11 +170,11 @@ None
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.cpu.w">
-<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rexp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#w"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.w" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.cpu.</span></span><span class="sig-name descname"><span class="pre">w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rexp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/cpu.html#w"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.cpu.w" title="Link to this definition">¶</a></dt>
 <dd><p>Gausssian Smoothing kernel (3D)
 (w is the evaluated smoothing function)</p>
 <section id="id12">
-<h3>Parameters<a class="headerlink" href="#id12" title="Permalink to this heading">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
 <p>h (float):          the smoothing length
 rexp (np.ndarray):  is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))</p>
 <p>Returns:
@@ -183,14 +183,162 @@ np.ndarray</p>
 </dd></dl>
 
 </section>
-<section id="simulation-gpu-module">
-<h2>simulation.gpu module<a class="headerlink" href="#simulation-gpu-module" title="Permalink to this heading">¶</a></h2>
+<section id="module-simulation.gpu">
+<span id="simulation-gpu-module"></span><h2>simulation.gpu module<a class="headerlink" href="#module-simulation.gpu" title="Link to this heading">¶</a></h2>
+<p>GPU Driven simulation of a toy star using CUDA</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="simulation.gpu.get_acc">
+<span class="sig-prename descclassname"><span class="pre">simulation.gpu.</span></span><span class="sig-name descname"><span class="pre">get_acc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmbda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/gpu.html#get_acc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.gpu.get_acc" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the acceleration on each SPH particle</p>
+<section id="id13">
+<h3>Parameters<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>pos (cp.ndarray):       is an N x 3 matrix of positions
+vel (cp.ndarray):       is an N x 3 matrix of velocities
+mass (float):           is the particle mass
+h (float):              is the smoothing length
+k (float):              equation of state constant
+poly_index (int):     polytropic index
+lmbda external (float): force constant
+nu (float):             viscosity</p>
+</section>
+<section id="id14">
+<h3>Returns<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<p>a (cp.ndarray):         is N x 3 matrix of accelerations</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simulation.gpu.get_density">
+<span class="sig-prename descclassname"><span class="pre">simulation.gpu.</span></span><span class="sig-name descname"><span class="pre">get_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rexp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/gpu.html#get_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.gpu.get_density" title="Link to this definition">¶</a></dt>
+<dd><p>Get Density at sampling loctions from SPH particle distribution</p>
+<section id="id15">
+<h3>Parameters<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<p>r (cp.ndarray):     is an M x 3 matrix of sampling locations
+mass (float):       is the particle mass
+h (float):          is the smoothing length
+rexp (cp.ndarray):  is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))</p>
+</section>
+<section id="id16">
+<h3>Returns<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<p>rho (cp.ndarray):   is M x 1 vector of densities</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simulation.gpu.get_pairwise_separations">
+<span class="sig-prename descclassname"><span class="pre">simulation.gpu.</span></span><span class="sig-name descname"><span class="pre">get_pairwise_separations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/simulation/gpu.html#get_pairwise_separations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.gpu.get_pairwise_separations" title="Link to this definition">¶</a></dt>
+<dd><p>Get pairwise desprations between 2 sets of coordinates</p>
+<section id="id17">
+<h3>Parameters<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>ri (cp.ndarray):    is an M x 3 matrix of positions
+rj (cp.ndarray):    is an N x 3 matrix of positions</p>
+</section>
+<section id="id18">
+<h3>Returns<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p>dx, dy, dz (cp.ndarray, cp.ndarray, cp.ndarray):   are M x N matrices of separations</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simulation.gpu.get_pressure">
+<span class="sig-prename descclassname"><span class="pre">simulation.gpu.</span></span><span class="sig-name descname"><span class="pre">get_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/gpu.html#get_pressure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.gpu.get_pressure" title="Link to this definition">¶</a></dt>
+<dd><p>Equation of State</p>
+<section id="id19">
+<h3>Parameters<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<p>rho (cp.ndarray):   vector of densities
+k (float):          equation of state constant
+n (int):            polytropic index</p>
+</section>
+<section id="id20">
+<h3>Returns<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p>p (cp.ndarray):     pressure</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simulation.gpu.grad_w">
+<span class="sig-prename descclassname"><span class="pre">simulation.gpu.</span></span><span class="sig-name descname"><span class="pre">grad_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rexp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/simulation/gpu.html#grad_w"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.gpu.grad_w" title="Link to this definition">¶</a></dt>
+<dd><p>Gradient of the Gausssian Smoothing kernel (3D)</p>
+<section id="id21">
+<h3>Parameters<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<p>x (cp.ndarray):      a vector/matrix of x positions
+y (cp.ndarray):      a vector/matrix of y positions
+z (cp.ndarray):      a vector/matrix of z positions
+h (float):           the smoothing length
+rexp (cp.ndarray):   is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))</p>
+</section>
+<section id="id22">
+<h3>Returns<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<p>wx, wy, wz (cp.ndarray, cp.ndarray, cp.ndarray): the evaluated gradient</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simulation.gpu.main">
+<span class="sig-prename descclassname"><span class="pre">simulation.gpu.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/simulation/gpu.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.gpu.main" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simulation.gpu.r_exp">
+<span class="sig-prename descclassname"><span class="pre">simulation.gpu.</span></span><span class="sig-name descname"><span class="pre">r_exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/gpu.html#r_exp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.gpu.r_exp" title="Link to this definition">¶</a></dt>
+<dd><p>Cached function for a common operation</p>
+<section id="id23">
+<h3>Parameters<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<p>x (cp.ndarray):     a vector/matrix of x positions
+y (cp.ndarray):     a vector/matrix of y positions
+z (cp.ndarray):     a vector/matrix of z positions
+h (float):          the smoothing length</p>
+</section>
+<section id="id24">
+<h3>Returns<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<p>(cp.ndarray): exp(-(x^2 + y^2 + z^2) / (h^2))</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simulation.gpu.sim">
+<span class="sig-prename descclassname"><span class="pre">simulation.gpu.</span></span><span class="sig-name descname"><span class="pre">sim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_2d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_real_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/simulation/gpu.html#sim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.gpu.sim" title="Link to this definition">¶</a></dt>
+<dd><p>SPH simulation</p>
+<p>This operation consumes a lot of GPU memory, 
+If you want to free gpu memory before or after this operation call
+mempool = cp.get_default_memory_pool()
+mempool.free_all_blocks()</p>
+<section id="id25">
+<h3>Parameters<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<p>plot: (bool):          Plot a simulation of a star if true
+n (int):               Number of particles
+time_end (float):      How long the simulation should run
+plot_2d (bool):        If true, plot 2d. If false, plot 3d
+plot_real_time (bool): Plot a simulation of a star in real time if true,</p>
+<blockquote>
+<div><p>if False, just show the last time step</p>
+</div></blockquote>
+<p>Returns
+None
+——-</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simulation.gpu.w">
+<span class="sig-prename descclassname"><span class="pre">simulation.gpu.</span></span><span class="sig-name descname"><span class="pre">w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rexp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/simulation/gpu.html#w"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.gpu.w" title="Link to this definition">¶</a></dt>
+<dd><p>Gausssian Smoothing kernel (3D)
+(w is the evaluated smoothing function)</p>
+<section id="id26">
+<h3>Parameters<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
+<p>h (float):          the smoothing length
+rexp (cp.ndarray):  is the precomputed exp(-(x^2 + y^2 + z^2) / (h^2))</p>
+<p>Returns:
+cp.ndarray</p>
+</section>
+</dd></dl>
+
 </section>
 <section id="module-simulation.original">
-<span id="simulation-original-module"></span><h2>simulation.original module<a class="headerlink" href="#module-simulation.original" title="Permalink to this heading">¶</a></h2>
+<span id="simulation-original-module"></span><h2>simulation.original module<a class="headerlink" href="#module-simulation.original" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.original.W">
-<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">W</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#W"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.W" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">W</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#W"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.W" title="Link to this definition">¶</a></dt>
 <dd><p>Gausssian Smoothing kernel (3D)
 x     is a vector/matrix of x positions
 y     is a vector/matrix of y positions
@@ -201,7 +349,7 @@ w     is the evaluated smoothing function</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.original.getAcc">
-<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">getAcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmbda</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#getAcc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.getAcc" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">getAcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmbda</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#getAcc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.getAcc" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate the acceleration on each SPH particle
 pos   is an N x 3 matrix of positions
 vel   is an N x 3 matrix of velocities
@@ -216,7 +364,7 @@ a     is N x 3 matrix of accelerations</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.original.getDensity">
-<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">getDensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#getDensity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.getDensity" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">getDensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#getDensity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.getDensity" title="Link to this definition">¶</a></dt>
 <dd><p>Get Density at sampling loctions from SPH particle distribution
 r     is an M x 3 matrix of sampling locations
 pos   is an N x 3 matrix of SPH particle positions
@@ -227,7 +375,7 @@ rho   is M x 1 vector of densities</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.original.getPairwiseSeparations">
-<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">getPairwiseSeparations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#getPairwiseSeparations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.getPairwiseSeparations" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">getPairwiseSeparations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#getPairwiseSeparations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.getPairwiseSeparations" title="Link to this definition">¶</a></dt>
 <dd><p>Get pairwise desprations between 2 sets of coordinates
 ri    is an M x 3 matrix of positions
 rj    is an N x 3 matrix of positions
@@ -236,7 +384,7 @@ dx, dy, dz   are M x N matrices of separations</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.original.getPressure">
-<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">getPressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#getPressure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.getPressure" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">getPressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#getPressure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.getPressure" title="Link to this definition">¶</a></dt>
 <dd><p>Equation of State
 rho   vector of densities
 k     equation of state constant
@@ -246,7 +394,7 @@ P     pressure</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.original.gradW">
-<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">gradW</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#gradW"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.gradW" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">gradW</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#gradW"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.gradW" title="Link to this definition">¶</a></dt>
 <dd><p>Gradient of the Gausssian Smoothing kernel (3D)
 x     is a vector/matrix of x positions
 y     is a vector/matrix of y positions
@@ -257,19 +405,18 @@ wx, wy, wz     is the evaluated gradient</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.original.main">
-<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.main" title="Permalink to this definition">¶</a></dt>
-<dd><p>SPH simulation</p>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/simulation/original.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.main" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.original.sim">
-<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">sim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_2d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_real_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#sim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.sim" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.original.</span></span><span class="sig-name descname"><span class="pre">sim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_2d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_real_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation/original.html#sim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.original.sim" title="Link to this definition">¶</a></dt>
 <dd><p>SPH simulation</p>
 </dd></dl>
 
 </section>
 <section id="module-simulation.sph_test">
-<span id="simulation-sph-test-module"></span><h2>simulation.sph_test module<a class="headerlink" href="#module-simulation.sph_test" title="Permalink to this heading">¶</a></h2>
+<span id="simulation-sph-test-module"></span><h2>simulation.sph_test module<a class="headerlink" href="#module-simulation.sph_test" title="Link to this heading">¶</a></h2>
 <p>We want to make sure that the simulation does what it should 
 even after our optimizations</p>
 <p>We add a test case with the old implementation, and then 
@@ -279,39 +426,14 @@ value</p>
 <p>Note: We only need to test function getAcc, it should cover all the code that was changed</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="simulation.sph_test.test_get_acc">
-<span class="sig-prename descclassname"><span class="pre">simulation.sph_test.</span></span><span class="sig-name descname"><span class="pre">test_get_acc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/simulation/sph_test.html#test_get_acc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.sph_test.test_get_acc" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">simulation.sph_test.</span></span><span class="sig-name descname"><span class="pre">test_get_acc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/simulation/sph_test.html#test_get_acc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.sph_test.test_get_acc" title="Link to this definition">¶</a></dt>
 <dd><p>Test the new getAcc to ensure it returns the 
 same result as the old getAcc function</p>
 </dd></dl>
 
 </section>
 <section id="module-simulation">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-simulation" title="Permalink to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="simulation.plot_different_n">
-<span class="sig-prename descclassname"><span class="pre">simulation.</span></span><span class="sig-name descname"><span class="pre">plot_different_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_cpu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_gpu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_original</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/simulation.html#plot_different_n"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulation.plot_different_n" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot performance of different optimizations</p>
-<section id="id13">
-<h3>Parameters<a class="headerlink" href="#id13" title="Permalink to this heading">¶</a></h3>
-<blockquote>
-<div><p>max_n (int): The maximum number of particles to use, the number of particles will show on the x-axis
-step (int): The number of simulation steps for each simulation
-times (int): The number of times to do the simulation for each set of arguments(Then take the avarage)
-show_cpu (bool): If true, run simulation on cpu. 
-show_gpu (bool): If true, run simulation on gpu. 
-show_original (bool): If true, run simulation without any optimizations. 
-log (bool): If true, do a log graph instead
-save (bool): If it should save to a png instead of display</p>
-</div></blockquote>
-</section>
-<section id="id14">
-<h3>Returns<a class="headerlink" href="#id14" title="Permalink to this heading">¶</a></h3>
-<blockquote>
-<div><p>None</p>
-</div></blockquote>
-</section>
-</dd></dl>
-
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-simulation" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -373,11 +495,11 @@ save (bool): If it should save to a png instead of display</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2024, victor.
+      &#169;2024, victor.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
       
       |
       <a href="_sources/simulation.rst.txt"
