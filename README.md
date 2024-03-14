@@ -45,3 +45,12 @@ When you run the code a window should pop up, showing a simulation of a star
 ## Documentation
 Feel free to check out the python documentation at:
 [Sphinx documentation](https://vicmil-kth-studier.github.io/DD2358-Toy-Star/simulation/docs/build/html/modules.html)
+
+## Profiling
+
+```
+(Add @profile to all functions)
+time kernprof -l  __main__.py gpu=False cpu=False
+python3 -m line_profiler __main__.py.lprof 
+```
+
